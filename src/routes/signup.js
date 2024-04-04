@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import express from 'express';
-import userModel from '../models/usersigninmodel';
+import userModel from '../models/usersigninmodel.js';
 
 const Router = express.Router();
 
@@ -10,7 +10,8 @@ Router.post('/user/signup', async (req, res) => {
     if (!username || !password) {
       return res.status(404).json({ msg: 'Username or password not provided' });
     }
-    const userExists = userModel.findOne({ username });
+    const userExists =  await userModel.findOne({ username });
+    console.log(userExists)
     if (userExists) {
       return res.status(404).json({ msg: 'user already exists' });
     }
@@ -32,3 +33,5 @@ Router.post('/user/signup', async (req, res) => {
     res.status(500).json({ msg: 'Internal server error' });
   }
 });
+
+export default Router;
