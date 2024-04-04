@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const userModel = mongoose.model('user', {
-  email: String,
+  username: String,
   password: String,
 });
 
