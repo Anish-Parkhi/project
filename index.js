@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import signInRoute from './src/routes/signin.js';
 import Router from './src/routes/signup.js';
 
 const app = express();
@@ -15,7 +16,8 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-app.use('/',Router)
+app.use('/', Router);
+app.use('/', signInRoute);
 
 app.listen(3000, () => {
   console.log('App is listening on port 3000');
