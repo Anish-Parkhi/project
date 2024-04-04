@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import express from 'express';
 import userModel from '../models/usersigninmodel';
 
@@ -13,9 +14,13 @@ Router.post('/user/signup', async (req, res) => {
     if (userExists) {
       return res.status(404).json({ msg: 'user already exists' });
     }
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const generateHash = await bcrypt.hash(password, salt);
+
     const user = new userModel({
       username: username,
-      password: password,
+      password: generateHash,
     });
 
     const userSavedRes = await user.save();
