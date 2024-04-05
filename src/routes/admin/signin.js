@@ -1,8 +1,11 @@
 import bcrypt from 'bcrypt';
 import express from 'express';
+import jwt from 'jsonwebtoken';
 import db from '../../../db.js';
 
 const adminSignInRouter = express();
+
+const jwtKey = '1234';
 
 adminSignInRouter.post('/signin', (req, res) => {
   const { email, password } = req.body;
@@ -24,7 +27,8 @@ adminSignInRouter.post('/signin', (req, res) => {
       );
       console.log(isPasswordCorrect);
       if (isPasswordCorrect) {
-        res.status(200).json({ msg: 'User verified successfully' });
+        const token = jwt.sign({ email: email, role: 'organizer' }, jwtKey);
+        res.status(200).json({ msg: 'User verified successfully', token });
       } else {
         return res.json({ msg: 'Incorrect password' });
       }
