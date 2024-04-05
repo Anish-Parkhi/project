@@ -5,6 +5,7 @@ import signInRoute from './src/routes/signin.js';
 import signUpRouter from './src/routes/signup.js';
 import allEventsRouter from './src/routes/event/allevents.js';
 import myEventsRouter from './src/routes/event/myevents.js';
+import bookTicketRouter from './src/routes/Ticket/bookTicket.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/', signUpRouter);
 app.use('/', signInRoute);
 app.use('/event',allEventsRouter);
 app.use('/event',myEventsRouter)
+app.use('/ticket', bookTicketRouter)
 
 app.listen(3000, () => {
   console.log('App is listening on port 3000');
