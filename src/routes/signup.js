@@ -2,9 +2,9 @@ import bcrypt from 'bcrypt';
 import express from 'express';
 import userModel from '../models/usersigninmodel.js';
 
-const Router = express.Router();
+const signUpRouter = express.Router();
 
-Router.post('/user/signup', async (req, res) => {
+signUpRouter.post('/user/signup', async (req, res) => {
   try {
     const { username, password } = req.body;
     if (!username || !password) {
@@ -34,4 +34,4 @@ Router.post('/user/signup', async (req, res) => {
   }
 });
 
-export default Router;
+export default signUpRouter;
