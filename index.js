@@ -3,6 +3,7 @@ import express from 'express';
 import db from './db.js';
 import bookTicketRouter from './src/routes/Ticket/bookTicket.js';
 import cancelTicketRotuer from './src/routes/Ticket/cancelTicket.js';
+import adminSignUpRouter from './src/routes/admin/signup.js';
 import allEventsRouter from './src/routes/event/allevents.js';
 import myEventsRouter from './src/routes/event/myevents.js';
 import signInRoute from './src/routes/signin.js';
@@ -29,6 +30,7 @@ app.use('/event', allEventsRouter);
 app.use('/event', myEventsRouter);
 app.use('/ticket', bookTicketRouter);
 app.use('/ticket', cancelTicketRotuer);
+app.use('/admin', adminSignUpRouter);
 
 app.listen(3000, () => {
   console.log('App is listening on port 3000');
