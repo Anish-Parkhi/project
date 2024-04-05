@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
 import express from 'express';
+import jwt from 'jsonwebtoken';
 import userModel from '../models/usersigninmodel.js';
+const jwtKey = '1234';
 
 const signInRoute = express.Router();
 
@@ -16,7 +18,10 @@ signInRoute.post('/user/signin', async (req, res) => {
     }
     const hashedPassword = await bcrypt.compare(password, user.password);
     if (hashedPassword) {
-      return res.status(200).json({ msg: 'user loggegd in successfully' });
+      const token = jwt.sign({username: username}, jwtKey);
+      return res
+        .status(200)
+        .json({ msg: 'user logged in successfully', token: token });
     } else {
       return res.status(200).json({ msg: 'Password incorrect' });
     }
