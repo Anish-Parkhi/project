@@ -10,7 +10,7 @@ const adminVerification = (req, res, next) => {
   const isVerified = jwt.verify(token, jwtKey);
   if (isVerified) {
     if (isVerified.role === 'organizer') {
-      return res.status(200).json({ msg: 'Admin/Organizer verified' });
+      next();
     } else {
       return res.json({ msg: 'Access denied!' });
     }

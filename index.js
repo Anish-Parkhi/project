@@ -12,9 +12,8 @@ import signInRoute from './src/routes/signin.js';
 import signUpRouter from './src/routes/signup.js';
 
 const app = express();
-
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 // mongoose.connect(
 //   'mongodb+srv://anishparkhi03:anish@cluster0.hayl2hj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/project'
 // );
