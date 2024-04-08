@@ -10,7 +10,7 @@ import allEventsRouter from './src/routes/event/allevents.js';
 import myEventsRouter from './src/routes/event/myevents.js';
 import signInRoute from './src/routes/signin.js';
 import signUpRouter from './src/routes/signup.js';
-
+import mostPopularRouter from './src/routes/event/mostPopular.js';
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -34,6 +34,7 @@ app.use('/ticket', cancelTicketRotuer);
 app.use('/admin', adminSignUpRouter);
 app.use('/admin', adminSignInRouter);
 app.use('/admin', createEventRouter);
+app.use('/event',mostPopularRouter)
 
 app.listen(3000, () => {
   console.log('App is listening on port 3000');
