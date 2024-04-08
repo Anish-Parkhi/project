@@ -1,37 +1,44 @@
-Routes 
 
-**Admin Routes**
+---
 
-```/admin/signup``` : signup route for organizer with help of name, email and password\
-```/admin/signin``` : signin route for oraganizer with email and password
+## Admin Routes
 
-**Events Routes**
+- **/admin/signup**: Signup route for organizers using name, email, and password.
+- **/admin/signin**: Signin route for organizers using email and password.
 
-```/event/``` : Get info of all the events\
-```/event/myevents``` : Get info of registered events
+## Events Routes
 
-**Ticket Routes**
+- **/event/**: Get information about all events.
+- **/event/myevents**: Get information about registered events.
 
-```/ticket/bookticket``` : Book the tickets with username, event id and ticket type\
-```/ticket/cancelticket``` : Cancel the ticket with help of user id and event id
+## Ticket Routes
 
-**Event Creation Route**
-```/admin/createevent``` : Event creation (token with admin email is required)\
-  ---
-  reuired attributes
-  host_name
-  email
-  contact_number
-  capacity
-  venue_name
-  address
-  event_name
-  event_description
-  event_date
-  category
-  ---
-  All of the above should be in body object
-  ---
-  token
-  ---
-  token should be in the headers authoriztion
+- **/ticket/bookticket**: Book tickets with username, event id, and ticket type.
+- **/ticket/cancelticket**: Cancel tickets using user id and event id.
+
+## Event Creation Route
+
+- **/admin/createevent**: Event creation route (requires token with admin email).
+
+### Required Attributes
+
+- host_name
+- email
+- contact_number
+- capacity
+- venue_name
+- address
+- event_name
+- event_description
+- event_date
+- category
+
+### Request Body Format
+
+All the required attributes should be included in the request body object.
+
+### Authentication
+
+- **Token**: The token containing the admin email should be included in the headers under the Authorization field.
+
+---
