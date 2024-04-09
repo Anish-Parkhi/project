@@ -8,15 +8,12 @@ import adminSignInRouter from './src/routes/admin/signin.js';
 import adminSignUpRouter from './src/routes/admin/signup.js';
 import allEventsRouter from './src/routes/event/allevents.js';
 import myEventsRouter from './src/routes/event/myevents.js';
-import signInRoute from './src/routes/signin.js';
-import signUpRouter from './src/routes/signup.js';
 import mostPopularRouter from './src/routes/event/mostPopular.js';
+import userSignUpRouter from './src/routes/user/Signup.js';
+import userSignInRouter from './src/routes/user/Signin.js';
 const app = express();
 app.use(cors());
 app.use(express.json());
-// mongoose.connect(
-//   'mongodb+srv://anishparkhi03:anish@cluster0.hayl2hj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/project'
-// );
 
 db.connect((err) => {
   if (err) {
@@ -25,8 +22,6 @@ db.connect((err) => {
   console.log('Connected to MySQL database');
 });
 
-app.use('/', signUpRouter);
-app.use('/', signInRoute);
 app.use('/event', allEventsRouter);
 app.use('/event', myEventsRouter);
 app.use('/ticket', bookTicketRouter);
@@ -35,6 +30,8 @@ app.use('/admin', adminSignUpRouter);
 app.use('/admin', adminSignInRouter);
 app.use('/admin', createEventRouter);
 app.use('/event',mostPopularRouter)
+app.use('/user',userSignUpRouter);
+app.use('/user',userSignInRouter);
 
 app.listen(3000, () => {
   console.log('App is listening on port 3000');
