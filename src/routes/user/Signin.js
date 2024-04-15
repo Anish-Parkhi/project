@@ -16,18 +16,19 @@ userSignInRouter.post('/signin', (req, res) => {
     [email],
     async (err, results) => {
       if (err) {
-        return res.status(500).json({ msg: "User doesn't exists" });
+        return res.status(500).json({ msg: 'Internal server error' });
+      } else if (results.length < 1) {
+        return res.json({ msg: 'User doesnt exists' });
+      }
+      const isPasswordCorrect = await bcrypt.compare(
+        password,
+        results[0].password
+      );
+      if (isPasswordCorrect) {
+        const token = jwt.sign({ email: email, role: 'user' }, jwtkey);
+        res.json({ msg: 'user signed in successfully', token });
       } else {
-        const isPasswordCorrect = await bcrypt.compare(
-          password,
-          results[0].password
-        );
-        if (isPasswordCorrect) {
-          const token = jwt.sign({ email: email, role: 'user' }, jwtkey);
-          res.json({ msg: 'user signed in successfully', token });
-        } else {
-          return res.json({ msg: 'Incorrect password' });
-        }
+        return res.json({ msg: 'Incorrect password' });
       }
     }
   );
