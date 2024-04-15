@@ -1,10 +1,10 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import db from '../../../db.js';
-
+import adminMiddleWare from '../../middlewares/adminverification.js';
 const createEventRouter = express();
 
-createEventRouter.post('/createevent', (req, res) => {
+createEventRouter.post('/createevent', adminMiddleWare, (req, res) => {
   // I think I should add data to other tables then at last to the events table
   //info of the organizer should be given in the token issued;
   const { host_name, email, contact_number } = req.body;

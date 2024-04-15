@@ -22,6 +22,8 @@ db.connect((err) => {
   console.log('Connected to MySQL database');
 });
 
+
+
 app.use('/event', allEventsRouter);
 app.use('/event', myEventsRouter);
 app.use('/ticket', bookTicketRouter);

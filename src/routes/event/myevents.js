@@ -1,8 +1,9 @@
 import express from 'express';
 import db from '../../../db.js';
 const myEventsRouter = express();
+import userMiddleWare from '../../middlewares/usermiddleware.js';
 
-myEventsRouter.get('/myevents', (req, res) => {
+myEventsRouter.get('/myevents', userMiddleWare ,(req, res) => {
   try {
     const userId = req.query.userId;
     if (!userId) {

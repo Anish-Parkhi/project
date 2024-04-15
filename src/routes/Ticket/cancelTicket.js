@@ -1,9 +1,10 @@
 import express from 'express';
+import userMiddleWare from '../../middlewares/usermiddleware.js';
 import db from '../../../db.js';
 
 const cancelTicketRotuer = express();
 
-cancelTicketRotuer.delete('/cancelticket', (req, res) => {
+cancelTicketRotuer.delete('/cancelticket', userMiddleWare,(req, res) => {
   try {
     const { userId, ticketId } = req.body;
     if (!userId || !ticketId) {

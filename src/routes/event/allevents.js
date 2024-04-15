@@ -1,8 +1,10 @@
 import express from 'express';
 import db from '../../../db.js';
 const allEventsRouter = express();
+import userMiddleWare from '../../middlewares/usermiddleware.js';
 
-allEventsRouter.get('/', (req, res) => {
+
+allEventsRouter.get('/', userMiddleWare ,  (req, res) => {
   db.query(
     `select * from event
   join 

@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const jwtKey = '1234';
 
-const adminVerification = (req, res, next) => {
+const adminMiddleWare = (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
     return res.json({ msg: 'Missing token' });
@@ -19,4 +19,4 @@ const adminVerification = (req, res, next) => {
   }
 };
 
-export default adminVerification;
+export default adminMiddleWare;

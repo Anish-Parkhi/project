@@ -8,10 +8,11 @@ const userMiddleWare = (req, res, next) => {
   }
   try {
     const isVerified = jwt.verify(token, jwtKey);
+    console.log(isVerified);
     if (isVerified && isVerified.role === 'user') {
       next();
     } else {
-      res.json({ msg: 'Failed to verify JWT' });
+      res.json({ msg: 'Access denied!' });
     }
   } catch (error) {
     res.status(500).json({ msg: 'Internal server error' });

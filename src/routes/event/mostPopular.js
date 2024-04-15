@@ -1,9 +1,10 @@
 import express from 'express';
 import db from '../../../db.js';
+import userMiddleWare from '../../middlewares/usermiddleware.js';
 
 const mostPopularRouter = express();
 
-mostPopularRouter.get('/mostpopular', (req, res) => {
+mostPopularRouter.get('/mostpopular',userMiddleWare, (req, res) => {
   db.query(
     `SELECT 
 	event.*,

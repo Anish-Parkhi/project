@@ -1,9 +1,10 @@
 import express from 'express';
 import db from '../../../db.js';
+import userMiddleWare from '../../middlewares/usermiddleware.js';
 
 const bookTicketRouter = express();
 
-bookTicketRouter.post('/bookticket', async (req, res) => {
+bookTicketRouter.post('/bookticket', userMiddleWare,async (req, res) => {
   const { userId, eventId, ticketType } = req.body;
   if (!userId || !eventId || !ticketType) {
     return res.json({ msg: 'Missing parameters' });
