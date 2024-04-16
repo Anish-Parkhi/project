@@ -26,7 +26,7 @@ userSignInRouter.post('/signin', (req, res) => {
       );
       if (isPasswordCorrect) {
         const token = jwt.sign({ email: email, role: 'user' }, jwtkey);
-        res.json({ msg: 'user signed in successfully', token });
+        res.json({ msg: 'user signed in successfully', token, role:"user" });
       } else {
         return res.json({ msg: 'Incorrect password' });
       }

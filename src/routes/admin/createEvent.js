@@ -4,7 +4,7 @@ import db from '../../../db.js';
 import adminMiddleWare from '../../middlewares/adminverification.js';
 const createEventRouter = express();
 
-createEventRouter.post('/createevent', adminMiddleWare, (req, res) => {
+createEventRouter.post('/createevent' ,adminMiddleWare ,(req, res) => {
   // I think I should add data to other tables then at last to the events table
   //info of the organizer should be given in the token issued;
   const { host_name, email, contact_number } = req.body;
