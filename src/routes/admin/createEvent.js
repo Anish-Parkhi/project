@@ -42,7 +42,7 @@ createEventRouter.post('/createevent' ,adminMiddleWare ,(req, res) => {
                     } else {
                       const venue_id = results.insertId;
                       db.query(
-                        'INSERT INTO event(host_id, event_name, event_description, event_date, category, venue_id, organizer_id) values (?, ?, ?, ?, ?, ?, ?)',
+                        'INSERT INTO event(host_id, event_name, event_description, event_date, category, venue_id, organizer_id) values (?, ?, ?, STR_TO_DATE(?, "%d/%m/%Y"), ?, ?, ?)',
                         [
                           host_id,
                           event_name,

@@ -27,7 +27,9 @@ cancelTicketRotuer.delete('/cancelticket', userMiddleWare,(req, res) => {
                   if (err) {
                     return res.status(500).json({ msg: 'Not able to unregister' });
                   } else {
+                    console.log(result)
                     return res.json({ msg: 'Ticket cancelled successfully' });
+
                   }
                 }
               );
