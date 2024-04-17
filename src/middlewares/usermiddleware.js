@@ -8,8 +8,10 @@ const userMiddleWare = (req, res, next) => {
   }
   try {
     const isVerified = jwt.verify(token, jwtKey);
+    const info = jwt.decode(token, jwtKey)
     console.log(isVerified);
     if (isVerified && isVerified.role === 'user') {
+      req.email = info.email
       next();
     } else {
       res.json({ msg: 'Access denied!' });
