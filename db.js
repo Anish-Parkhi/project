@@ -4,7 +4,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'eventmgmt',
+  database: 'dbms_project',
 });
 
 export default db;

@@ -20,11 +20,11 @@ userSignInRouter.post('/signin', (req, res) => {
       } else if (results.length < 1) {
         return res.json({ msg: 'User doesnt exists' });
       }
-      const isPasswordCorrect = await bcrypt.compare(
-        password,
-        results[0].password
-      );
-      if (isPasswordCorrect) {
+      // const isPasswordCorrect = await bcrypt.compare(
+      //   password,
+      //   results[0].password
+      // );
+      if (password === results[0].password) {
         const token = jwt.sign({ email: email, role: 'user' }, jwtkey);
         res.json({ msg: 'user signed in successfully', token, role:"user" });
       } else {

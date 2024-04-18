@@ -29,8 +29,6 @@ GROUP BY
 ORDER BY 
     registration_count DESC
 LIMIT 3;
-
-
 `,
     (err, results) => {
       if (err) {

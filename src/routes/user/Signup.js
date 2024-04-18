@@ -16,9 +16,10 @@ userSignUpRouter.post('/signup', (req, res) => {
       if (results.length > 0 && results[0]?.email === email) {
         return res.json({ msg: 'User already exists' });
       } else {
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hashedPassword = await bcrypt.hash(password, salt);
+        // const saltRounds = 10;
+        // const salt = await bcrypt.genSalt(saltRounds);
+        // const hashedPassword = await bcrypt.hash(password, salt);
+        const hashedPassword = password
         db.query(
           'INSERT INTO user(email, name, password)values(?,?,?)',
           [email, name, hashedPassword],

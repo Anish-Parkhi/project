@@ -31,7 +31,7 @@ myEventsRouter.get('/myevents', userMiddleWare, (req, res) => {
             on e.host_id = h.host_id
             join ticket t
             on t.ticket_id = r.ticket_id
-            where u.user_id = 6;
+            where u.user_id = ?;
         `,
             [userId],
             (error, result) => {

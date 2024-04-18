@@ -22,7 +22,6 @@ createEventRouter.post('/createevent' ,adminMiddleWare ,(req, res) => {
           res.status(500).json({ msg: 'Organizer not found' });
         } else {
           const organizer_id = results[0].organizer_id;
-          //insret info of the host
           db.query(
             'INSERT INTO host(host_name, email, contact_number) values(?, ?, ?)',
             [host_name, email, contact_number],
